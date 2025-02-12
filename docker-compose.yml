@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  http-sink:
+    image: http-sink  # Uses the built image
+    build: .  # Builds from the local Dockerfile
+    ports:
+      - "7500:5000"  # Exposes port 5000
+    volumes:
+      - ./captured_rdf:/data/captured_rdf  # Mounts local dir for saving RDF files
+    restart: unless-stopped  # Ensures it restarts if it crashes
+
